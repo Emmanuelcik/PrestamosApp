@@ -1,40 +1,26 @@
 import Header from "./components/Header";
-import React, {Fragment} from 'react'
+import React, {Fragment, useState} from 'react'
 import Formulario from "./components/Formulario";
 
 function App() {
+
+  //Definir el state
+  const [cantidad, guardarCantidad] = useState(0);
+
   return (
-    <form>
-          <div className="row">
-              <div>
-                  <label>Cantidad Prestamo</label>
-                  <input 
-                      className="u-full-width" 
-                      type="number" 
-                      placeholder="Ejemplo: 3000" 
-                  />
-              </div>
-              <div>
-                  <label>Plazo para Pagar</label>
-                  <select 
-                      className="u-full-width"
-                  >
-                      <option value="">Seleccionar</option>
-                      <option value="3">3 meses</option>
-                      <option value="6">6 meses</option>
-                      <option value="12">12 meses</option>
-                      <option value="24">24 meses</option>
-                  </select>
-              </div>
-              <div>
-                  <input 
-                      type="submit" 
-                      value="Calcular" 
-                      className="button-primary u-full-width" 
-                  />
-              </div>
-          </div>
-  </form>
+    <Fragment> 
+      <Header 
+        title="Cotizador de Prestamos"
+        description="Use the form and get a cotization"
+      />
+      
+      <div className="container">
+        <Formulario 
+          cantidad = {cantidad}
+          guardarCantidad = {guardarCantidad}
+        />
+      </div>
+    </Fragment>
   );
 }
 
