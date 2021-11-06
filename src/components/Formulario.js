@@ -1,4 +1,5 @@
-import React, {useState, Fragment} from 'react'
+import React, {useState, Fragment} from 'react';
+import {calcularTotal} from '../helpers.js';
 
 function Formulario({cantidad, guardarCantidad, plazo, guardarPlazo}){
 
@@ -16,8 +17,9 @@ function Formulario({cantidad, guardarCantidad, plazo, guardarPlazo}){
         }
         //Eliminar el error
         guardarError(false);
-        //Realizar cotizacion
 
+        //Realizar cotizacion   
+        calcularTotal(cantidad, plazo)
     }
     
 
