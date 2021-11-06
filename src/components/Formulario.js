@@ -1,13 +1,25 @@
-import React from 'react'
+import React, {useState} from 'react'
 
-function Formulario({cantidad, guardarCantidad}){
+function Formulario({cantidad, guardarCantidad, plazo, guardarPlazo}){
 
+    //Definir state
+    const [error, guardarError] = useState(false);
+
+    //Cuando el usuario hace submit
+    const calcularPrestamo = e =>{
+        e.preventDefault();
+        
+        //Validar 
+        if(cantidad === 0 || plazo === ""){
+            guardarError(true);
+        }
+        //Realizar cotizacion
+
+    }
     
 
-
     return (
-        <form>
-        {cantidad}
+        <form onSubmit= {calcularPrestamo}>
             <div className="row">
                 <div>
                     <label>Cantidad Prestamo</label>
@@ -22,6 +34,7 @@ function Formulario({cantidad, guardarCantidad}){
                     <label>Plazo para Pagar</label>
                     <select 
                         className="u-full-width"
+                        onChange= { e => guardarPlazo(parseInt( e.target.value ))  }
                     >
                         <option value="">Seleccionar</option>
                         <option value="3">3 meses</option>
